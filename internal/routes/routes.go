@@ -13,6 +13,7 @@ func InitalizeRoutes(r *mux.Router, client *mongo.Client) {
 	r.HandleFunc("/", Home).Methods("GET")
 	r.HandleFunc("/login", mongodbMiddleware(login.Patient, client)).Methods("GET", "POST")
 	r.HandleFunc("/signup", mongodbMiddleware(signup.Patient, client)).Methods("GET", "POST")
+	r.HandleFunc("/logout", Logout).Methods("GET", "POST")
 }
 
 func mongodbMiddleware(f func(http.ResponseWriter, *http.Request, *mongo.Client), c *mongo.Client) http.HandlerFunc {

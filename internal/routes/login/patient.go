@@ -35,7 +35,7 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 		patient, err := schema.FetchPatientExistsBy(client, "username", r.PostFormValue("username"))
 
 		if err != nil {
-			http.Error(w, "Internal FETCH Server Error", http.StatusInternalServerError)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 			return
 		}
 
