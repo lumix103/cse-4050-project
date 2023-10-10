@@ -45,7 +45,7 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 		patient := schema.NewPatientUser(r.PostFormValue("email"), r.PostFormValue("first-name"),
 			r.PostFormValue("last-name"), date, r.PostFormValue("gender"),
 			r.PostFormValue("username"), string(hash))
-		exists, err := schema.CheckIfPatientExists(client, r.PostFormValue("email"))
+		exists, err := schema.CheckIfPatientExists(client, r.PostFormValue("username"), r.PostFormValue("email"))
 
 		if err != nil {
 			fmt.Println(err)

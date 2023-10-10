@@ -34,14 +34,19 @@ func NewPatientUser(email, firstName, lastName string, dob time.Time, gender, us
 	}
 }
 
-func CheckIfPatientExists(client *mongo.Client, email string) (bool, error) {
+func CheckIfPatientExists(client *mongo.Client, username, email string) (bool, error) {
 	collection := client.Database("Debug").Collection("patientUser")
 
 	if collection == nil {
 		return false, fmt.Errorf("failed to get the collection Debug:patientUser")
 	}
 
-	filter := bson.M{"email": email}
+	filter := bson.M{
+		"$or": []bson.M{
+			{"email": email},
+			{"username": username},
+		},
+	}
 
 	count, err := collection.CountDocuments(context.Background(), filter)
 
@@ -50,6 +55,26 @@ func CheckIfPatientExists(client *mongo.Client, email string) (bool, error) {
 	}
 
 	return count > 0, nil
+}
+
+func FetchPatientExistsBy(client *mongo.Client, field, value string) (*PatientUser, error) {
+	collection := client.Database("Debug").Collection("patientUser")
+
+	if collection == nil {
+		return nil, fmt.Errorf("failed to get the collection Debug:patientUser")
+	}
+
+	filter := bson.M{field: value}
+
+	var patient PatientUser
+	if err := collection.FindOne(context.Background(), filter).Decode(&patient); err != nil {
+		if err == mongo.ErrNoDocuments {
+			return nil, nil
+		}
+		return nil, err
+	}
+
+	return &patient, nil
 }
 
 func InsertPatientUser(client *mongo.Client, patient *PatientUser) error {
