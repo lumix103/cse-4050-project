@@ -9,8 +9,6 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"github.com/lumix103/cse-4050-project/internal/routes"
-	"github.com/lumix103/cse-4050-project/internal/routes/login"
-	"github.com/lumix103/cse-4050-project/internal/routes/signup"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -39,8 +37,6 @@ func main() {
 	}()
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", routes.Home).Methods("GET")
-	r.HandleFunc("/login", login.Patient).Methods("GET", "POST")
-	r.HandleFunc("/signup", signup.Patient).Methods("GET", "POST")
+	routes.InitalizeRoutes(r, client)
 	http.ListenAndServe(":8000", r)
 }
