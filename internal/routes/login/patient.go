@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 
+	"github.com/lumix103/cse-4050-project/internal/auth"
 	"github.com/lumix103/cse-4050-project/internal/db/schema"
 	"go.mongodb.org/mongo-driver/mongo"
 	"golang.org/x/crypto/bcrypt"
@@ -34,7 +35,7 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 		patient, err := schema.FetchPatientExistsBy(client, "username", r.PostFormValue("username"))
 
 		if err != nil {
-			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			http.Error(w, "Internal FETCH Server Error", http.StatusInternalServerError)
 			return
 		}
 
@@ -53,7 +54,18 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 			}
 			return
 		} else {
-			//TODO jwt auth
+			jwtToken, exp, err := auth.GenerateToken(patient.Username, patient.FirstName+" "+patient.LastName, "p")
+			if err != nil {
+				fmt.Println(err)
+				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+				return
+			}
+			http.SetCookie(w, &http.Cookie{
+				Name:     "token",
+				Value:    jwtToken,
+				Expires:  exp,
+				HttpOnly: true,
+			})
 			http.Redirect(w, r, "/", http.StatusSeeOther)
 		}
 	}
@@ -69,21 +81,3 @@ func enforcePatientLoginValues(r *http.Request) error {
 
 	return nil
 }
-
-/*
-========================================================================
-NOTE: old code I was using for proof of concept that I might reuse later
-========================================================================
-		if username, ok_name := r.Form["username"]; ok_name {
-			if password, ok_pass := r.Form["password"]; ok_pass {
-				if username[0] != "user" || password[0] != "password" {
-					w.WriteHeader(http.StatusUnauthorized)
-					if err := tmpl.Execute(w, "Invalid username or password"); err != nil {
-						http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-					}
-					return
-				}
-				http.Redirect(w, r, "/", http.StatusSeeOther)
-			}
-		}
-*/

@@ -16,7 +16,11 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>Home Page</h1>
+        {{if .}}
+            <h1>Welcome {{.}}</h1>
+        {{else}}
+            <h1>Home Page</h1>
+        {{end}}
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>

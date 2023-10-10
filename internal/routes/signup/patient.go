@@ -54,6 +54,7 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 		}
 		if exists {
 			http.Error(w, "User already exists", http.StatusConflict)
+			return
 		}
 
 		if err := schema.InsertPatientUser(client, patient); err != nil {

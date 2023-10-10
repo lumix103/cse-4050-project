@@ -24,6 +24,12 @@ func main() {
 		log.Fatal("No environmental variable 'MONGODB_URI' is set")
 	}
 
+	jwt_secret := os.Getenv("JWT_SECRET_KEY")
+
+	if jwt_secret == "" {
+		log.Fatal("No environmental variable 'JWT_SECRET_KEY' is set")
+	}
+
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 
 	if err != nil {
