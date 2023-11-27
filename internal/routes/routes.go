@@ -43,6 +43,17 @@ func InitalizeRoutes(r *mux.Router, client *mongo.Client) {
 	apiRoutes.HandleFunc("/unschedule/{appointment_id}", authMongodbMiddleware(api.Unschedule, client)).Methods("POST")
 }
 
+func isLoggedIn(r *http.Request) bool {
+	cookie, err := r.Cookie("token")
+
+	if err != nil {
+		return false
+	}
+	_, err = auth.ParseToken(cookie.Value)
+
+	return err == nil
+}
+
 func portalReroute(w http.ResponseWriter, r *http.Request, c *mongo.Client) {
 	// auth middleware should of checked for errors already
 	cookie, _ := r.Cookie("token")
