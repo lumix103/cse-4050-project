@@ -33,6 +33,7 @@ Before you begin, ensure you have met the following requirements:
 To run this project, you will need to add the following environment variables to your `.env` file. If you don't have an `.env` file, create one in the root folder.
 
 `MONGODB_URI`
+`JWT_SECRET_KEY`
 
 ## Deployment
 
