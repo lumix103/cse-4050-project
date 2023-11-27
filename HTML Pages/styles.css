@@ -262,12 +262,13 @@ footer {
     flex: 1;
     margin: 0 20px;
     align-self: center;
-    
+    font-weight: bold;
     font-size: 30px;
     color: #d603ba;
 }
 #login-signup{
     background-color: #fff;
+    
 }
 
 #login-signup h2 {
@@ -277,7 +278,11 @@ footer {
     color: #0366d6;
 }
 .user{
-    display:flex
+    display:flex;
+    margin-bottom: 100px;
+    align-items: center;
+    min-height: 50vh;
+    font-weight: bold;
 }
 .user-option1{
     position: left;
@@ -287,7 +292,8 @@ footer {
     color: #333;
     border: 3px solid #003f91;
     padding: 10px;
-    margin: 0 auto 0 100px;
+    border-radius: 8px;
+    margin: 0 auto 0 200px;
 
 }
 
@@ -298,21 +304,26 @@ footer {
     font-size: 18px;
     color: #333;
     border: 3px solid #003f91;
+    border-radius: 8px;
     padding: 10px;
-    margin: 0 100px 0 auto;
+    margin: 0 200px 0 auto;
 }
 
 .user button {
     background-color: #0366d6;
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 30px;
     text-decoration: none;
     border: none;
+    font-size: 18px;
     border-radius: 5px;
     display: block; /* Ensure the button is treated as a block-level element */
-    margin: 0 auto; /
+    margin: 0 auto; 
 }
-
+.user button:hover {
+    background-color: #004182; /* Change color on hover */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
 .user-option1 h3{
     color: #5A5A5A;
     text-align: center;
@@ -324,7 +335,7 @@ footer {
 }
 .user img{
     display: block;
-    margin: 0 120px 0 auto;
+    margin: -150px auto 10px auto;
 }
 @media (max-width: 768px) {
     header {
