@@ -43,6 +43,11 @@ func main() {
 	}()
 
 	r := mux.NewRouter()
+
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./web/static"))))
+
+	routes.InitalizeTemplates()
 	routes.InitalizeRoutes(r, client)
+
 	http.ListenAndServe(":8000", r)
 }
