@@ -7,6 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type DoctorUser struct {
@@ -52,6 +53,32 @@ func CheckIfDoctorExists(client *mongo.Client, email, username string) (bool, er
 	return count > 0, nil
 }
 
+func FetchDoctors(client *mongo.Client, start, end int) ([]DoctorUser, error) {
+
+	collection := client.Database("Debug").Collection("doctorUser")
+
+	if collection == nil {
+		return nil, fmt.Errorf("failed to get the collection Debug: doctorUser")
+	}
+
+	filter := bson.D{{}}
+
+	options := options.Find().SetSort(bson.D{{"_id", 1}}).SetSkip(int64(start - 1)).SetLimit(int64(end))
+
+	cursor, err := collection.Find(context.Background(), filter, options)
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close(context.Background())
+
+	var doctors []DoctorUser
+	if err := cursor.All(context.Background(), &doctors); err != nil {
+		return nil, err
+	}
+
+	return doctors, nil
+}
+
 func FetchDoctorBy(client *mongo.Client, field, value string) (*DoctorUser, error) {
 	collection := client.Database("Debug").Collection("doctorUser")
 
@@ -59,7 +86,17 @@ func FetchDoctorBy(client *mongo.Client, field, value string) (*DoctorUser, erro
 		return nil, fmt.Errorf("failed to get the collection Debug:doctorUser")
 	}
 
-	filter := bson.M{field: value}
+	var filter primitive.M
+
+	if field == "_id" {
+		value, err := primitive.ObjectIDFromHex(value)
+		if err != nil {
+			return nil, err
+		}
+		filter = bson.M{field: value}
+	} else {
+		filter = bson.M{field: value}
+	}
 
 	var patient DoctorUser
 	if err := collection.FindOne(context.Background(), filter).Decode(&patient); err != nil {
