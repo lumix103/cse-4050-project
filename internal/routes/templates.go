@@ -6,6 +6,8 @@ var HomePage *template.Template
 
 var AboutUsPage *template.Template
 
+var ChoicePage *template.Template
+
 var PatientLogin *template.Template
 
 var DoctorLogin *template.Template
@@ -17,6 +19,7 @@ var PatientSignup *template.Template
 func InitalizeTemplates() {
 	HomePage = template.Must(template.ParseFiles("./web/templates/home.html"))
 	AboutUsPage = template.Must(template.ParseFiles("./web/templates/aboutUs.html"))
+	ChoicePage = template.Must(template.ParseFiles("./web/templates/choice.html"))
 	PatientLogin = template.Must(template.ParseFiles("./web/templates/login/patient.html"))
 	DoctorLogin = template.Must(template.ParseFiles("./web/templates/login/doctor.html"))
 	DoctorSignup = template.Must(template.ParseFiles("./web/templates/signup/doctor.html"))

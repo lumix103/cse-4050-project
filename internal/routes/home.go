@@ -15,3 +15,9 @@ func AboutUs(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }
+
+func ChoiceLogin(w http.ResponseWriter, r *http.Request) {
+	if err := ChoicePage.Execute(w, nil); err != nil {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
+}

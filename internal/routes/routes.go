@@ -20,6 +20,7 @@ func InitalizeRoutes(r *mux.Router, client *mongo.Client) {
 	r.HandleFunc("/", Home).Methods("GET")
 	r.HandleFunc("/home", Home).Methods("GET")
 	r.HandleFunc("/about-us", AboutUs).Methods("GET")
+	r.HandleFunc("/choice", ChoiceLogin)
 	r.HandleFunc("/logout", Logout).Methods("GET", "POST")
 	// All patients pages
 	r.HandleFunc("/login", mongodbMiddleware(login.Patient, client)).Methods("GET", "POST")

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedConnect - Sign Up / Log In</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file for styling -->
+    <link rel="stylesheet" href="../static/css/styles.css"> <!-- Link to your external CSS file for styling -->
 </head>
 <body>
     <header>
         <h1>MedConnect</h1>
         <nav>
             <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="choice.html">Patient Portal</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/choice">Patient Portal</a></li>
             </ul>
         </nav>
     </header>
@@ -27,19 +27,19 @@
             <div class="divider"></div>
             <p>Welcome! Please sign up or log in to access employee dashboard.</p>
             <div class="divider"></div>
-            <button onclick="location.href='signup/doctor.html'">Sign Up</button>
+            <button onclick="location.href='/doctor-signup'">Sign Up</button>
             <div class="divider"></div>
-            <button onclick="location.href='login/doctor.html'">Log In</button>
+            <button onclick="location.href='/doctor-login'">Log In</button>
         </div>
-        <img src="patient.png" alt="logo2">
+        <img src="./static/assets/patient.png" alt="logo2">
         <div class="user-option2">
             <h3>Patient</h3>
             <div class="divider"></div>
             <p>Welcome! Please sign up or log in to access patient dashboard.</p>
             <div class="divider"></div>
-            <button onclick="location.href='signup/patient.html'">Sign Up</button>
+            <button onclick="location.href='/signup'">Sign Up</button>
             <div class="divider"></div>
-            <button onclick="location.href='login/patient.html'">Log In</button>
+            <button onclick="location.href='/login'">Log In</button>
         </div>
         
     </div>
