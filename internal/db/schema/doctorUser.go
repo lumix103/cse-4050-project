@@ -63,7 +63,7 @@ func FetchDoctors(client *mongo.Client, start, end int) ([]DoctorUser, error) {
 
 	filter := bson.D{{}}
 
-	options := options.Find().SetSort(bson.D{{"_id", 1}}).SetSkip(int64(start - 1)).SetLimit(int64(end))
+	options := options.Find().SetSort(bson.D{{Key: "_id", Value: 1}}).SetSkip(int64(start - 1)).SetLimit(int64(end))
 
 	cursor, err := collection.Find(context.Background(), filter, options)
 	if err != nil {

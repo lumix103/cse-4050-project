@@ -1,0 +1,8 @@
+<div>
+    <h1>Patient Profile</h1>
+    <p>Name: {{.FirstName}} {{.LastName}}</p>
+    <p>Date of Birth: {{.DOB.Format "02/01/2006"}}</p>
+    {{if ne .Gender ""}}
+        <p>Gender: {{.Gender}}</p>
+    {{end}}
+</div>

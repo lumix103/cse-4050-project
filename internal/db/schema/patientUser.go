@@ -64,7 +64,17 @@ func FetchPatientExistsBy(client *mongo.Client, field, value string) (*PatientUs
 		return nil, fmt.Errorf("failed to get the collection Debug:patientUser")
 	}
 
-	filter := bson.M{field: value}
+	var filter primitive.M
+
+	if field == "_id" {
+		value, err := primitive.ObjectIDFromHex(value)
+		if err != nil {
+			return nil, err
+		}
+		filter = bson.M{field: value}
+	} else {
+		filter = bson.M{field: value}
+	}
 
 	var patient PatientUser
 	if err := collection.FindOne(context.Background(), filter).Decode(&patient); err != nil {
