@@ -220,7 +220,6 @@ footer {
     flex: 1;
     margin: 0 20px;
     align-self: center;
-    
     font-size: 30px;
     color: #0366d6;
 }
@@ -258,6 +257,7 @@ footer {
     align-items: center;
 }
 
+
 .motto p{
     flex: 1;
     margin: 0 20px;
@@ -265,6 +265,66 @@ footer {
     
     font-size: 30px;
     color: #d603ba;
+}
+#login-signup{
+    background-color: #fff;
+}
+
+#login-signup h2 {
+    align-self: center;
+    font-size: 30px;
+    text-align: center;
+    color: #0366d6;
+}
+.user{
+    display:flex
+}
+.user-option1{
+    position: left;
+    text-align: left;
+    font-family: Verdana;
+    font-size: 18px;
+    color: #333;
+    border: 3px solid #003f91;
+    padding: 10px;
+    margin: 0 auto 0 100px;
+
+}
+
+.user-option2{
+    margin-left: auto;
+    text-align: right;
+    font-family: Verdana;
+    font-size: 18px;
+    color: #333;
+    border: 3px solid #003f91;
+    padding: 10px;
+    margin: 0 100px 0 auto;
+}
+
+.user button {
+    background-color: #0366d6;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    display: block; /* Ensure the button is treated as a block-level element */
+    margin: 0 auto; /
+}
+
+.user-option1 h3{
+    color: #5A5A5A;
+    text-align: center;
+}
+
+.user-option2 h3{
+    color: #5A5A5A;
+    text-align: center;
+}
+.user img{
+    display: block;
+    margin: 0 120px 0 auto;
 }
 @media (max-width: 768px) {
     header {
