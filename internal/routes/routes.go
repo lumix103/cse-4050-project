@@ -31,7 +31,7 @@ func InitalizeRoutes(r *mux.Router, client *mongo.Client) {
 	// All dashboard pages
 	r.HandleFunc("/portal", authMongodbMiddleware(portalReroute, client))
 	r.HandleFunc("/patient-portal", authMongodbMiddleware(dashboard.Patient, client))
-
+	r.HandleFunc("/patient-reports", authMongodbMiddleware(dashboard.PatientReports, client))
 	//     API Routes
 	// <================>
 	apiRoutes := r.PathPrefix("/api").Subrouter()
