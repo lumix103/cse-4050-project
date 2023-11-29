@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        /* Your provided stylesheet goes here */
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        header {
+            background-color: #0366d6;
+            color: #fff;
+            padding: 40px 0; /* Adjusted padding */
+            text-align: center;
+            z-index: 1; /* Ensure the header is above other elements */
+        }
+
+        header h1 {
+            font-size: 36px;
+        }
+
+        nav {
+            text-align: center; /* Center the navigation links */
+            margin-top: -35px; /* Adjusted margin to move the navigation up */
+            z-index: 2; /* Ensure the navigation is above other elements */
+        }
+
+        nav ul {
+            list-style: none;
+            display: inline; /* Display the list items inline */
+        }
+
+        nav li {
+            margin-right: 20px;
+            display: inline; /* Display the list items inline */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 40px;
+            background-color: #fdfdfd;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .divider {
+            width: 100%;
+            height: 1px;
+            margin: 10px 0; /* Adjust the margin as needed */
+        }
+
+        #welcome{
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #0366d6;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #003f91;
+        }
+
+        .patient-info{
+            text-align: center;
+        }
+
+        .appointment-schedule{
+            text-align: center;
+        }
+
+        .future-appointments{
+            text-align: center;
+        }
+        
+        .patient-info{
+            font-family: Verdana;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="medconnect logo.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
+    <h1>Patient Dashboard</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#reports">Reports</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#logout">Logout</a></li>
+    </ul>
+    
+</nav>
+
+<section id = "welcome">
+    <!-- Your dashboard content goes here -->
+    <p>Welcome to your patient dashboard!</p>
+</section>
+
+<section class="patient-info">
+    <h2>Patient Information</h2>
+    <div class="divider"></div>
+    <p>First Name: John</p>
+    <p>Last Name: Doe</p>
+    <p>Gender: F</p>
+    <p>DOB: 1/11/14</p>
+    <!--Please put appropriate code for name and dob-->
+</section>
+
+<section class="appointment-schedule">
+    <h2>Schedule an Appointment</h2>
+    <div class="divider"></div>
+    <img src="calendar.webp" alt="Logo" style="max-width: 100px; max-height: 100px;">
+    <div class="divider"></div>
+    <a href="/choice" class="btn">Schedule</a>
+</section>
+
+<section class="future-appointments">
+    <h2>Future Appointments</h2>
+    <!-- Display future appointments information here -->
+    
+</section>
+
+
+<footer>
+    <p>&copy; 2023 MedConnect. All rights reserved.</p>
+</footer>
+</body>
+</html>
