@@ -154,14 +154,14 @@
     
     <h2>Patient Information</h2>
     <div class="divider"></div>
-    <p>First Name: {{.FirstName}}</p>
-    <p>Last Name: {{.LastName}}</p>
-    {{if ne .Gender ""}}
-        <p>Gender: {{.Gender}}</p>
+    <p>First Name: {{.Patient.FirstName}}</p>
+    <p>Last Name: {{.Patient.LastName}}</p>
+    {{if ne .Patient.Gender ""}}
+        <p>Gender: {{.Patient.Gender}}</p>
     {{else}}
         <p>Gender: NA</p>
     {{end}}
-    <p>DOB: {{.DOB.Format "02/01/2006"}}</p>
+    <p>DOB: {{.Patient.DOB.Format "02/01/2006"}}</p>
     <!--Please put appropriate code for name and dob-->
 </section>
 
@@ -173,43 +173,26 @@
     <a href="/choice" class="btn">Schedule</a>
 </section>
 
-<<<<<<< HEAD:web/templates/dashboard/patient/dashboard.html
-<section class="future-appointments">
-    <h2>Future Appointments</h2>
-    <!-- Display future appointments information here -->
-    <div class="appointment-list">
-        <!-- Example appointment box -->
-        <div class="appointment-box">
-            <p>Date: 10/11/2023</p>
-            <p>Time: 5:00pm</p>
-            <p>Doctor: John Doe</p>
-        </div>
-    </div>
-</section>
-=======
 <div class="appointment-container">
     <section class="appointment-info">
         <h2>Future Appointments</h2>
         <div class="divider"></div>
-
         <div class="appointment-list">
-            <!-- Example appointment box -->
-            <div class="appointment-box">
-                <p>Date: 10/11/2023</p>
-                <p>Time: 5:00pm</p>
-                <p>Doctor: John Doe</p>
-            </div>
-            <!-- Example appointment box -->
-            <div class="appointment-box">
-                <p>Date: 11/23/2023</p>
-                <p>Time: 4:00pm</p>
-                <p>Doctor: John Doe</p>
-            </div>
+            {{if .Appointments}}
+                {{range .Appointments}}
+
+                    <div class="appointment-box">
+                        <p>Date: {{.AppointmentDate.DOB.Format "02/01/2006"}}</p>
+                    </div>
+
+                {{end}}
+            {{else}}
+                <p>No Appointments Available.</p>
+            {{end}}
             <!-- Add more appointment boxes with dynamic data -->
         </div>
     </section>
 </div>
->>>>>>> 54683c1000256f13faee121f7816176e36afe134:patientdashboard.html
 
 
 <footer>

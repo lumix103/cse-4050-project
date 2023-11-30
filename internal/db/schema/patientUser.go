@@ -21,6 +21,11 @@ type PatientUser struct {
 	Password  string             `bson:"password"`
 }
 
+type PatientAppointments struct {
+	Patient      *PatientUser
+	Appointments []Appointment
+}
+
 func NewPatientUser(email, firstName, lastName string, dob time.Time, gender, username, password string) *PatientUser {
 	return &PatientUser{
 		ID:        primitive.NewObjectID(),

@@ -20,6 +20,7 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 	tok, _ := r.Cookie("token")
 	claims, _ := auth.ParseToken(tok.Value)
 	username, ok := claims["username"].(string)
+
 	if !ok {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
@@ -31,7 +32,16 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 		return
 	}
 
-	if err := tmpl.Execute(w, patient); err != nil {
+	appointments, err := schema.FetchFutureAppointments(client, patient, nil)
+
+	if err != nil {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	pa := schema.PatientAppointments{Patient: patient, Appointments: appointments}
+
+	if err := tmpl.Execute(w, pa); err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }
