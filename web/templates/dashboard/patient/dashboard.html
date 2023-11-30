@@ -104,6 +104,18 @@
         .appointment-info{
             font-family: Verdana;
             text-align: center;
+<<<<<<< HEAD:web/templates/dashboard/patient/dashboard.html
+=======
+        }
+
+        .appointment-box {
+            display: inline-block;
+            vertical-align: top; /* Align the boxes at the top */
+            width: 200px; /* Set a fixed width for each appointment box */
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 10px;
+>>>>>>> 54683c1000256f13faee121f7816176e36afe134:patientdashboard.html
         }
 
         .appointment-box {
@@ -125,7 +137,8 @@
 
 <nav>
     <ul>
-        <li><a href="#reports">Reports</a></li>
+        <li><a href="patientdashboard.html">Home</a></li>
+        <li><a href="ReportsPatient.html">Reports</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="/logout">Logout</a></li>
     </ul>
@@ -160,6 +173,7 @@
     <a href="/choice" class="btn">Schedule</a>
 </section>
 
+<<<<<<< HEAD:web/templates/dashboard/patient/dashboard.html
 <section class="future-appointments">
     <h2>Future Appointments</h2>
     <!-- Display future appointments information here -->
@@ -172,6 +186,30 @@
         </div>
     </div>
 </section>
+=======
+<div class="appointment-container">
+    <section class="appointment-info">
+        <h2>Future Appointments</h2>
+        <div class="divider"></div>
+
+        <div class="appointment-list">
+            <!-- Example appointment box -->
+            <div class="appointment-box">
+                <p>Date: 10/11/2023</p>
+                <p>Time: 5:00pm</p>
+                <p>Doctor: John Doe</p>
+            </div>
+            <!-- Example appointment box -->
+            <div class="appointment-box">
+                <p>Date: 11/23/2023</p>
+                <p>Time: 4:00pm</p>
+                <p>Doctor: John Doe</p>
+            </div>
+            <!-- Add more appointment boxes with dynamic data -->
+        </div>
+    </section>
+</div>
+>>>>>>> 54683c1000256f13faee121f7816176e36afe134:patientdashboard.html
 
 
 <footer>

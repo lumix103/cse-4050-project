@@ -113,6 +113,27 @@
             padding: 20px;
             border: 1px solid #ddd;
             margin: 10px;
+<<<<<<< HEAD:web/templates/dashboard/doctor/dashboard.html
+=======
+             /* Center the text */
+        }
+
+        .appointment-box {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px; /* Set a fixed width for each appointment box */
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+>>>>>>> 54683c1000256f13faee121f7816176e36afe134:doctordashboard.html
         }
 
     </style>
@@ -126,7 +147,8 @@
 
 <nav>
     <ul>
-        <li><a href="#reports">Reports</a></li>
+        <li><a href="doctordashboard.html">Home</a></li>
+        <li><a href="ReportsDoctor.html">Reports</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="/logout">Logout</a></li>
     </ul>
@@ -141,7 +163,7 @@
 <div class="patient-container">
     <section class="patient-info">
         <h2>Current Patients</h2>
-        <div class="divider"></div>
+        <img src="patient01.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
 
         <div class="patient-list">
             <!-- Example patient box -->
@@ -166,6 +188,7 @@
     </section>
 
     <section class="future-appointments">
+<<<<<<< HEAD:web/templates/dashboard/doctor/dashboard.html
         <h2>Future Appointments</h2>
         <div class="divider"></div>
         <img src="../static/assets/calendar.webp" alt="Logo">
@@ -186,6 +209,29 @@
             <!-- Add more appointment boxes with dynamic data -->
         </div>
         
+=======
+        <!-- Display future appointments information here -->
+        
+        <div class="appointment-container">
+            <h2>Future Appointments</h2>
+            <img src="calendar.webp" alt="Logo" style="max-width: 100px; max-height: 100px;">
+    
+            <div class="appointment-list">
+                <!-- Example appointment box -->
+                <div class="appointment-box">
+                    <p>Date: 10/11/2023</p>
+                    <p>Time: 5:00pm</p>
+                    <p>Patient: John Doe</p>
+                </div>
+                <!-- Example appointment box -->
+                <div class="appointment-box">
+                    <p>Date: 11/23/2023</p>
+                    <p>Time: 4:00pm</p>
+                    <p>Patient: John Doe</p>
+                </div>
+            </div>
+        </div>
+>>>>>>> 54683c1000256f13faee121f7816176e36afe134:doctordashboard.html
     </section>
 </div>
 
