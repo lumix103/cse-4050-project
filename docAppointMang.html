@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor's Appointments</title>
     <style>
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        header {
+            background-color: #0366d6;
+            color: #fff;
+            padding: 40px 0; /* Adjusted padding */
+            text-align: center;
+            z-index: 1; /* Ensure the header is above other elements */
+        }
+
+        header h1 {
+            font-size: 36px;
         }
 
         table {
@@ -23,7 +43,7 @@
         }
 
         th {
-            background-color: #4CAF50;
+            background-color: #0366d6;
             color: white;
         }
 
@@ -33,7 +53,7 @@
         }
 
         .accept-btn {
-            background-color: #4CAF50;
+            background-color: #0366d6;
             color: white;
         }
 
@@ -41,11 +61,48 @@
             background-color: #f44336;
             color: white;
         }
+
+        nav {
+            text-align: center; /* Center the navigation links */
+            margin-top: -35px; /* Adjusted margin to move the navigation up */
+            z-index: 2; /* Ensure the navigation is above other elements */
+        }
+
+        nav ul {
+            list-style: none;
+            display: inline; /* Display the list items inline */
+        }
+
+        nav li {
+            margin-right: 20px;
+            display: inline; /* Display the list items inline */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        
     </style>
 </head>
 <body>
 
-    <h2>Doctor's Appointments</h2>
+    <header>
+        <img src="cse-4050-project\web\static\assets\medconnect logo.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
+        <h1>Doctor Dashboard</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="doctordashboard.html">Home</a></li>
+            <li><a href="ReportsDoctor.html">Reports</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+        
+    </nav>
 
     <table>
         <tr>
