@@ -9,8 +9,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
-	tmpl, err := template.ParseFiles("./web/templates/dashboard/patient/dashboard.html")
+func DoctorDashboard(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
+	tmpl, err := template.ParseFiles("./web/templates/dashboard/doctor/dashboard.html")
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
@@ -24,26 +24,14 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
-	patient, err := schema.FetchPatientExistsBy(client, "username", username)
+	doctor, err := schema.FetchDoctorBy(client, "username", username)
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
-	if err := tmpl.Execute(w, patient); err != nil {
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-	}
-}
-
-func PatientReports(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
-	tmpl, err := template.ParseFiles("./web/templates/dashboard/patient/reports.html")
-	if err != nil {
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
-
-	if err := tmpl.Execute(w, nil); err != nil {
+	if err := tmpl.Execute(w, doctor); err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }

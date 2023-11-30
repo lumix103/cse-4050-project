@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Dashboard</title>
+    <title>Patient Dashboard</title>
     <style>
         /* Your provided stylesheet goes here */
         body, h1, h2, h3, p, ul, li {
@@ -69,7 +69,13 @@
             text-align: center;
         }
 
-       
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
         .btn {
             background-color: #0366d6;
             color: #fff;
@@ -83,104 +89,90 @@
             background-color: #003f91;
         }
 
-        .patient-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .patient-info,
-        .future-appointments {
+        .patient-info{
             text-align: center;
-            width: calc(50% - 20px); /* Adjust the width based on your preference */
-            box-sizing: border-box;
-            margin: 10px auto;
         }
 
-        .future-appointments img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-
-        .patient-list{
-            display:flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .patient-box {
+        .appointment-schedule{
             text-align: center;
-            width: 200px; /* Set a fixed width for each patient box */
+        }
+
+        .future-appointments{
+            text-align: center;
+        }
+        
+        .appointment-info{
+            font-family: Verdana;
+            text-align: center;
+        }
+
+        .appointment-box {
+            display: inline-block;
+            vertical-align: top; /* Align the boxes at the top */
+            width: 200px; /* Set a fixed width for each appointment box */
             padding: 20px;
             border: 1px solid #ddd;
             margin: 10px;
-             /* Center the text */
         }
-        
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
     </style>
 </head>
 <body>
 
 <header>
-    <img src="medconnect logo.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
-    <h1>Doctor Dashboard</h1>
+    <img src="../static/assets/medconnect logo.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
+    <h1>Patient Dashboard</h1>
 </header>
 
 <nav>
     <ul>
         <li><a href="#reports">Reports</a></li>
         <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#logout">Logout</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
     
 </nav>
 
 <section id = "welcome">
     <!-- Your dashboard content goes here -->
-    <p>Welcome to your MedConnect dashboard!</p>
+    <p>Welcome to your patient dashboard!</p>
 </section>
 
-<div class="patient-container">
-    <section class="patient-info">
-        <h2>Current Patients</h2>
-        <div class="divider"></div>
+<section class="patient-info">
+    
+    <h2>Patient Information</h2>
+    <div class="divider"></div>
+    <p>First Name: {{.FirstName}}</p>
+    <p>Last Name: {{.LastName}}</p>
+    {{if ne .Gender ""}}
+        <p>Gender: {{.Gender}}</p>
+    {{else}}
+        <p>Gender: NA</p>
+    {{end}}
+    <p>DOB: {{.DOB.Format "02/01/2006"}}</p>
+    <!--Please put appropriate code for name and dob-->
+</section>
 
-        <div class="patient-list">
-            <!-- Example patient box -->
-            <div class="patient-box">
-                <p>First Name: John</p>
-                <p>Last Name: Doe</p>
-                <p>Gender: F</p>
-                <p>DOB: 1/11/14</p>
-            </div>
-        
-        <div class="patient-list">
-            <!-- Example patient box -->
-            <div class="patient-box">
-                <p>First Name: John</p>
-                <p>Last Name: Doe</p>
-                <p>Gender: F</p>
-                <p>DOB: 1/11/14</p>
-            </div>
-        
-            <!-- Add more patient boxes with dynamic data -->
+<section class="appointment-schedule">
+    <h2>Schedule an Appointment</h2>
+    <div class="divider"></div>
+    <img src="../static/assets/calendar.webp" alt="Logo" style="max-width: 100px; max-height: 100px;">
+    <div class="divider"></div>
+    <a href="/choice" class="btn">Schedule</a>
+</section>
+
+<section class="future-appointments">
+    <h2>Future Appointments</h2>
+    <!-- Display future appointments information here -->
+    <div class="appointment-list">
+        <!-- Example appointment box -->
+        <div class="appointment-box">
+            <p>Date: 10/11/2023</p>
+            <p>Time: 5:00pm</p>
+            <p>Doctor: John Doe</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="future-appointments">
-        <h2>Future Appointments</h2>
-        <div class="divider"></div>
-        <img src="calendar.webp" alt="Logo">
-        <!-- Display future appointments information here -->
-    </section>
-</div>
 
 <footer>
     <p>&copy; 2023 MedConnect. All rights reserved.</p>

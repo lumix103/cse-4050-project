@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard</title>
+    <title>Doctor Dashboard</title>
     <style>
         /* Your provided stylesheet goes here */
         body, h1, h2, h3, p, ul, li {
@@ -101,8 +101,18 @@
             text-align: center;
         }
         
-        .patient-info{
+        .appointment-info{
             font-family: Verdana;
+            text-align: center;
+        }
+
+        .appointment-box {
+            display: inline-block;
+            vertical-align: top; /* Align the boxes at the top */
+            width: 200px; /* Set a fixed width for each appointment box */
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 10px;
         }
 
     </style>
@@ -110,48 +120,74 @@
 <body>
 
 <header>
-    <img src="medconnect logo.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
-    <h1>Patient Dashboard</h1>
+    <img src="../static/assets/medconnect logo.png" alt="Logo" style="max-width: 100px; max-height: 100px;">
+    <h1>Doctor Dashboard</h1>
 </header>
 
 <nav>
     <ul>
         <li><a href="#reports">Reports</a></li>
         <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#logout">Logout</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
     
 </nav>
 
 <section id = "welcome">
     <!-- Your dashboard content goes here -->
-    <p>Welcome to your patient dashboard!</p>
+    <p>Welcome to your MedConnect dashboard!</p>
 </section>
 
-<section class="patient-info">
-    <h2>Patient Information</h2>
-    <div class="divider"></div>
-    <p>First Name: John</p>
-    <p>Last Name: Doe</p>
-    <p>Gender: F</p>
-    <p>DOB: 1/11/14</p>
-    <!--Please put appropriate code for name and dob-->
-</section>
+<div class="patient-container">
+    <section class="patient-info">
+        <h2>Current Patients</h2>
+        <div class="divider"></div>
 
-<section class="appointment-schedule">
-    <h2>Schedule an Appointment</h2>
-    <div class="divider"></div>
-    <img src="calendar.webp" alt="Logo" style="max-width: 100px; max-height: 100px;">
-    <div class="divider"></div>
-    <a href="/choice" class="btn">Schedule</a>
-</section>
+        <div class="patient-list">
+            <!-- Example patient box -->
+            <div class="patient-box">
+                <p>First Name: John</p>
+                <p>Last Name: Doe</p>
+                <p>Gender: F</p>
+                <p>DOB: 1/11/14</p>
+            </div>
+        
+        <div class="patient-list">
+            <!-- Example patient box -->
+            <div class="patient-box">
+                <p>First Name: John</p>
+                <p>Last Name: Doe</p>
+                <p>Gender: F</p>
+                <p>DOB: 1/11/14</p>
+            </div>
+        
+            <!-- Add more patient boxes with dynamic data -->
+        </div>
+    </section>
 
-<section class="future-appointments">
-    <h2>Future Appointments</h2>
-    <!-- Display future appointments information here -->
-    
-</section>
-
+    <section class="future-appointments">
+        <h2>Future Appointments</h2>
+        <div class="divider"></div>
+        <img src="../static/assets/calendar.webp" alt="Logo">
+        <!-- Display future appointments information here -->
+        <div class="appointment-list">
+            <!-- Example appointment box -->
+            <div class="appointment-box">
+                <p>Date: 10/11/2023</p>
+                <p>Time: 5:00pm</p>
+                <p>Doctor: John Doe</p>
+            </div>
+            <!-- Example appointment box -->
+            <div class="appointment-box">
+                <p>Date: 11/23/2023</p>
+                <p>Time: 4:00pm</p>
+                <p>Doctor: John Doe</p>
+            </div>
+            <!-- Add more appointment boxes with dynamic data -->
+        </div>
+        
+    </section>
+</div>
 
 <footer>
     <p>&copy; 2023 MedConnect. All rights reserved.</p>

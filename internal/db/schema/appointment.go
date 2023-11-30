@@ -39,3 +39,8 @@ func InsertAppointment(client *mongo.Client, doctor DoctorUser, patient PatientU
 	}
 	return nil
 }
+
+func FetchFutureAppointments(client *mongo.Client, patient PatientUser, doctor DoctorUser) ([]Appointment, error) {
+
+	return nil, nil
+}
