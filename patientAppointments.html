@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Scheduling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-inline-size: 600px;
+            margin: 0 auto;s
+        }
+
+        label {
+            display: block;
+            margin-block-start: 10px;
+        }
+
+        input, select {
+            inline-size: 100%;
+            padding: 8px;
+            margin-block-start: 5px;
+            margin-block-end: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Appointment Scheduling</h2>
+
+    <form action="process_form.php" method="post">
+        <label for="patient_name">Patient Name:</label>
+        <input type="text" id="patient_name" name="patient_name" required>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+        <label for="doctor">Select a Doctor:</label>
+        <select id="doctor" name="doctor" required>
+            <option value="dr_smith">Dr. Smith</option>
+            <option value="dr_jones">Dr. Jones</option>
+            <!-- Add more doctors as needed -->
+        </select>
+
+        <label for="date">Select a Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Select a Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="reason">Reason for Visit:</label>
+        <textarea id="reason" name="reason" rows="4" required></textarea>
+
+        <input type="submit" value="Schedule Appointment">
+    </form>
+
+</body>
+</html>

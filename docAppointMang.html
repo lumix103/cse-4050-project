@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            inline-size: 100%;
+            border-collapse: collapse;
+            margin-block-start: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: start;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .accept-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .deny-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Doctor's Appointments</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Reason</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>John Doe</td>
+            <td>2023-01-01</td>
+            <td>10:00 AM</td>
+            <td>Annual Checkup</td>
+            <td>
+                <button class="action-btn accept-btn">Accept</button>
+                <button class="action-btn deny-btn">Deny</button>
+            </td>
+        </tr>
+        <!-- more rows here -->
+    </table>
+
+    <script>
+        document.querySelectorAll('.accept-btn').forEach(function(button) {
+            button.addEventListener('click', function() {
+                alert('Appointment Accepted');
+            });
+        });
+
+        document.querySelectorAll('.deny-btn').forEach(function(button) {
+            button.addEventListener('click', function() {
+                alert('Appointment Denied'); 
+            });
+        });
+    </script>
+
+</body>
+</html>
