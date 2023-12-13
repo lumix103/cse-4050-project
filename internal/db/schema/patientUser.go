@@ -106,3 +106,17 @@ func InsertPatientUser(client *mongo.Client, patient *PatientUser) error {
 
 	return nil
 }
+
+func FetchUniquePatientsFromAppointments(client *mongo.Client, appointments []Appointment) ([]PatientUser, error) {
+	if appointments == nil {
+		return nil, fmt.Errorf("appoinments is nil")
+	}
+
+	patientIDs := make(map[primitive.ObjectID]interface{})
+
+	for _, appointment := range appointments {
+		patientIDs[appointment.PatientID] = struct{}{}
+	}
+
+	return nil, fmt.Errorf("failed")
+}
