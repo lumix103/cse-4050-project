@@ -47,7 +47,19 @@ func Patient(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
 }
 
 func PatientReports(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
-	tmpl, err := template.ParseFiles("./web/templates/dashboard/patient/reports.html")
+	tmpl, err := template.ParseFiles("./web/templates/dashboard/patient/PatientReportsactual.html")
+	if err != nil {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	if err := tmpl.Execute(w, nil); err != nil {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
+}
+
+func PatientSchedule(w http.ResponseWriter, r *http.Request, client *mongo.Client) {
+	tmpl, err := template.ParseFiles("./web/templates/dashboard/patient/patientAppointments.html")
 	if err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
